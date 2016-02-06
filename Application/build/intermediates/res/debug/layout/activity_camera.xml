@@ -21,11 +21,20 @@
     android:background="#000"
     tools:context="com.example.android.camera2basic.CameraActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:layout_gravity="right|top"
+        android:src="@drawable/camera_draw"
+        android:visibility="invisible"/>
+
     <android.gesture.GestureOverlayView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/gestureOverlayView1"
-        android:layout_gravity="top"></android.gesture.GestureOverlayView>
+        android:layout_gravity="top"
+        android:gestureColor="#13ed0c"></android.gesture.GestureOverlayView>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
@@ -35,12 +44,5 @@
         android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/info" />
 
-    <ImageView
-        android:layout_width="139dp"
-        android:layout_height="139dp"
-        android:id="@+id/imageView"
-        android:layout_gravity="right|top"
-        android:src="@drawable/camera_draw"
-        android:visibility="invisible"/>
 </FrameLayout>
 <!-- From: file:/home/pedro/Documentos/NPI/Camera2Basic/Application/src/main/res/layout/activity_camera.xml -->

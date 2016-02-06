@@ -197,7 +197,7 @@ public class Camera2BasicFragment extends Fragment
             new CountDownTimer(4000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
-                    showToast(getString(R.string.restante) + millisUntilFinished / 1000 + getString(R.string.segundos));
+                    showToast(getString(R.string.restante) + " " + millisUntilFinished / 1000 + " " + getString(R.string.segundos));
                 }
 
                 public void onFinish() {
@@ -786,6 +786,7 @@ public class Camera2BasicFragment extends Fragment
             mState = STATE_WAITING_LOCK;
             mCaptureSession.capture(mPreviewRequestBuilder.build(), mCaptureCallback,
                     mBackgroundHandler);
+
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -844,6 +845,7 @@ public class Camera2BasicFragment extends Fragment
                     showToast("Saved: " + mFile);
                     Log.d(TAG, mFile.toString());
                     unlockFocus();
+
                 }
             };
 

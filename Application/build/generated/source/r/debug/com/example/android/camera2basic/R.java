@@ -2371,14 +2371,14 @@ containing a value of this type.
         public static final int fill_horizontal=0x7f0c002e;
         public static final int fill_vertical=0x7f0c0021;
         public static final int fixed=0x7f0c0037;
-        public static final int gestureOverlayView1=0x7f0c006a;
+        public static final int gestureOverlayView1=0x7f0c006b;
         public static final int home=0x7f0c0004;
         public static final int homeAsUp=0x7f0c000f;
         public static final int icon=0x7f0c0042;
         public static final int ifRoom=0x7f0c0034;
         public static final int image=0x7f0c003f;
-        public static final int imageView=0x7f0c006c;
-        public static final int info=0x7f0c006b;
+        public static final int imageView=0x7f0c006a;
+        public static final int info=0x7f0c006c;
         public static final int item_touch_helper_previous_elevation=0x7f0c0005;
         public static final int left=0x7f0c0022;
         public static final int line1=0x7f0c007c;

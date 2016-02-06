@@ -34,12 +34,13 @@ import java.util.ArrayList;
 public class CameraActivity extends AppCompatActivity implements GestureOverlayView.OnGesturePerformedListener{
 
     private GestureLibrary gLibrary;
+    int info; //Para controlar las veces que se solicitado ayuda
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-
+        info = 0;
         GestureOverlayView gesture;
         //Relacionamos con el XML
         gesture = (GestureOverlayView)findViewById(R.id.gestureOverlayView1);
@@ -52,6 +53,11 @@ public class CameraActivity extends AppCompatActivity implements GestureOverlayV
         gLibrary.load();
     }
 
+    /** Gestiona los gestos realizados sobre la pantalla
+     *
+     * @param overlay Vista sobre la que se ha hecho el gesto
+     * @param gesture Gesto hecho
+     */
     @Override
     public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
         //añadimos los diferentes resultados obtenidos
@@ -62,7 +68,7 @@ public class CameraActivity extends AppCompatActivity implements GestureOverlayV
             //En este caso solos nos interesa el gesto que más se parezca
             Prediction prediction = predictions.get(0);
             //Miramos que tengo un parecido mínimo
-            if (prediction.score > 4.5) {
+            if (prediction.score > 4) {
                 //Lanzamos la cámara
 
                 getFragmentManager().beginTransaction()
@@ -73,25 +79,33 @@ public class CameraActivity extends AppCompatActivity implements GestureOverlayV
                 info.hide();
 
             }else{
-                //Si no supera el 4.5 de fiabilidad
+                //Si no supera el 4.0 de fiabilidad
                 Toast.makeText(this, getString(R.string.no_reconocido), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
+    /** Gestiona los eventos de click que se realicen
+     * @param view Vista (referencia) del botón que se ha pulsado
+     */
+
     public void onClick(View view) {
         switch (view.getId()) {
 
             case R.id.info: {
-                    new AlertDialog.Builder(this)
-                            .setMessage(R.string.info)
-                            .setPositiveButton(android.R.string.ok, null)
-                            .show();
+                    if(info == 0) {
+                        new AlertDialog.Builder(this)
+                                .setMessage(R.string.info)
+                                .setPositiveButton(android.R.string.ok, null)
+                                .show();
+                        info++;
+                    }else {
 
-                ImageView imageview = (ImageView) findViewById(R.id.imageView);
-                imageview.setVisibility(View.VISIBLE);
-                FloatingActionButton info = (FloatingActionButton) findViewById(R.id.info);
-                info.hide();
+                        ImageView imageview = (ImageView) findViewById(R.id.imageView);
+                        imageview.setVisibility(View.VISIBLE);
+                        FloatingActionButton info = (FloatingActionButton) findViewById(R.id.info);
+                        info.hide();
+                    }
             }
                 break;
         }
