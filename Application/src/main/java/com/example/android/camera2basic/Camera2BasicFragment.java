@@ -24,6 +24,7 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.ImageFormat;
@@ -202,6 +203,20 @@ public class Camera2BasicFragment extends Fragment
 
                 public void onFinish() {
                     takePicture();
+
+                    new CountDownTimer(4000, 1000) {
+
+                        public void onTick(long millisUntilFinished) {
+                            //showToast(getString(R.string.restante) + " " + millisUntilFinished / 1000 + " " + getString(R.string.segundos));
+                        }
+
+                        public void onFinish() {
+
+                            Intent intent = new Intent(getActivity(), PictureActivity.class);
+                            intent.putExtra("imagen", mFile);
+                            startActivity(intent);
+                        }
+                    }.start();
                 }
             }.start();
         }
